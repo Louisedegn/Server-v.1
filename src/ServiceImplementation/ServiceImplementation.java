@@ -91,7 +91,7 @@ public class ServiceImplementation {
 
             getAdsAllSQL = connection.prepareStatement("SELECT * FROM ads");
 
-            getAdsSQL = connection.prepareStatement("SELECT ads.adid, ads.isbn, ads.price, ads.rating, users.username, books.title, books.edition, books.author FROM ads INNER JOIN users ON ads.userid = users.userid INNER JOIN books ON ads.isbn = books.isbn WHERE deleted = 0 AND locked = 0");
+            getAdsSQL = connection.prepareStatement("SELECT ads.adid, ads.isbn, ads.price, ads.rating, ads.comment, users.username, users.phonenumber, users.mobilepay, users.cash, users.transfer, books.title, books.edition, books.author FROM ads INNER JOIN users ON ads.userid = users.userid INNER JOIN books ON ads.isbn = books.isbn WHERE deleted = 0 AND locked = 0");
 
             getMyAdsSQL = connection.prepareStatement("SELECT * FROM ads WHERE userid = ? AND deleted = 0");
 
@@ -462,6 +462,11 @@ public class ServiceImplementation {
                 ad.setBookEdition(resultSet.getString("edition"));
                 ad.setRating(resultSet.getInt("rating"));
                 ad.setPrice(resultSet.getInt("price"));
+                ad.setComment(resultSet.getString("comment"));
+                ad.setUserMobilepay(resultSet.getInt("mobilepay"));
+                ad.setUserCash(resultSet.getInt("cash"));
+                ad.setUserTransfer(resultSet.getInt("transfer"));
+                ad.setUserPhonenumber(resultSet.getInt("phonenumber"));
 
                 listAds.add(ad);
             }
@@ -497,6 +502,10 @@ public class ServiceImplementation {
                 ad.setComment(resultSet.getString("comment"));
                 ad.setLocked(resultSet.getInt("locked"));
                 ad.setDeleted(resultSet.getInt("deleted"));
+                ad.setUserMobilepay(resultSet.getInt("mobilepay"));
+                ad.setUserCash(resultSet.getInt("cash"));
+                ad.setUserTransfer(resultSet.getInt("transfer"));
+                ad.setUserPhonenumber(resultSet.getInt("phonenumber"));
 
                 listAds.add(ad);
             }
@@ -533,6 +542,10 @@ public class ServiceImplementation {
                 ad.setComment(resultSet.getString("comment"));
                 ad.setLocked(resultSet.getInt("locked"));
                 ad.setDeleted(resultSet.getInt("deleted"));
+                ad.setUserMobilepay(resultSet.getInt("mobilepay"));
+                ad.setUserCash(resultSet.getInt("cash"));
+                ad.setUserTransfer(resultSet.getInt("transfer"));
+                ad.setUserPhonenumber(resultSet.getInt("phonenumber"));
 
                 listMyAds.add(ad);
             }

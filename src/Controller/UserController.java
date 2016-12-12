@@ -5,9 +5,7 @@ import ServiceImplementation.ServiceImplementation;
 
 import java.util.ArrayList;
 
-/**
- * Created by krist on 17-10-2016.
- */
+
 public class UserController {
 
     ServiceImplementation serviceImpl = new ServiceImplementation();
